@@ -1,0 +1,76 @@
+body{
+
+    margin: 0 px;
+    font-size: 16pt;
+
+
+}
+
+.navigationbar{
+    background-color: #368983;
+    padding:10px;
+    border : 0px;
+    margin: 0px;
+
+
+
+
+}
+
+.navigationbar .options {
+    color :white;
+    
+}
+
+.navigationbar .options li{
+
+    display: inline-block;
+    padding: 30px;
+}
+
+.navigationbar .options li:active{
+
+    background-color: blue;
+    border-radius: 20px;
+
+    
+}
+
+
+
+
+.footpage #links{
+
+    color :white;
+
+
+
+}
+
+.footpage #links ul li{
+
+    display: flex;
+    padding: 10px;
+
+}
+
+
+.footpage #contact{
+
+    display: inline-block;
+    padding: 10px;
+    color:white
+
+}
+
+
+
+.footpage{
+
+    background-color: #368983;
+    padding:10px;
+    border : 0px;
+    margin: 0px;
+
+
+}
