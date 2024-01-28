@@ -7,52 +7,105 @@
     <title>Chores Management</title>
 </head>
 <body>
-    <nav class = "navigationbar">
 
-       <ul class = "options">
-
-        <li>Home</li>
-        <li>Chores</li>
-        <li>Setting</li>
-        <li>sign up</li>
-        <li>Sign out</li>
+    <nav class="navigationbar">
+       <ul class="options">
+        <li><a href="/page/home.html">Home</a></li>
+        <li><a href="/page/chore.html">Chore</a></li>
+        <li><a href="/page/setting.html">Setting</a></li>
+        <li><a href="/page/signup.html">Sign Up</a></li>
+         <li><a href="/page/signout.html">Sign out </a></li>
         <li><a href="/page/login.html">Login</a></li>
-        
-        <li>Leaderboard</li>
+        <li><a href="/page/leaderboard.html">Leaderboard</a></li>
+        <li><a href="/page/profile.html">Profile</a></li>
 
        </ul>
-
     </nav>
 
+    <div class = "content">
+
+
+   
 
     
+    <div class="sign_up">
+        <form id="signupForm" onsubmit="return validateForm()">
+            <label for="username">Username</label>
+            <input type="text" id="username" placeholder="Username" required>
+
+            <label for="firstname">First Name</label>
+            <input type="text" id="firstname" placeholder="First Name" required>
+
+            <label for="lastname">Last Name</label>
+            <input type="text" id="lastname" placeholder="Last Name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="hello@gmail.com" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Password" required>
+
+            <label for="confirm_password">Confirm Password</label>
+            <input type="password" id="confirm_password" placeholder="Confirm Password" required>
+
+            <button type="submit">Sign up</button>
+        </form>
+    </div>
 
 
-    <footer class = "footpage">
 
-        <div id = "contact">
+</div>
+
+    <footer class="footpage">
+        <div id="contact">
             <h2>Contact Information</h2>
             <p>Email: choremangement.com</p>
             <p>Phone: (+257) 61600443</p>
         </div>
-
-        <div id = "links">
+        <div id="links">
             <h2>Quick Links</h2>
             <ul>
-                <li>Home</li>
-                <li>Chores</li>
-                <li>Setting</li>
-                <li>sign up</li>
-                        
-            </ul>
+                <li><a href="/page/home.html">Home</a></li>
+                <li><a href="/page/chore.html">Chore</a></li>
+                <li><a href="/page/setting.html">Setting</a></li>
+                <li><a href="/page/signup.html">Sign Up</a></li>
+                <li><a href="/page/signout.html">Sign out </a></li>
+                <li><a href="/page/login.html">Login</a></li>
+                <li><a href="/page/leaderboard.html">Leaderboard</a></li>
+                <li><a href="/page/profile.html">Profile</a></li>
 
+            </ul>
         </div>
-    
     </footer>
 
-    
+    <script>
+        function validateForm() {
+            // Basic email and password validation using regex
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
 
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var confirm_password = document.getElementById("confirm_password").value;
 
-    
+            if (!emailRegex.test(email)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+            if (!passwordRegex.test(password)) {
+                alert("Password must contain at least 8 characters, including one digit, one lowercase, and one uppercase letter.");
+                return false;
+            }
+
+            if (password !== confirm_password) {
+                alert("Passwords do not match.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+
 </body>
 </html>
