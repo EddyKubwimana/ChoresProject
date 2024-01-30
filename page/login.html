@@ -1,88 +1,85 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/chore.css">
-    <title>Chores Management</title>
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #368983;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        .login-container h2 {
+            color: #368983;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            text-align: left;
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .form-group button {
+            background-color: #368983;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body>
-    <nav class = "navigationbar">
-
-       <ul class = "options">
-
-        <li><a href="/page/home.html">Home</a></li>
-        <li><a href="/page/chore.html">Chore</a></li>
-        <li><a href="/page/setting.html">Setting</a></li>
-        <li><a href="/page/signup.html">Sign Up</a></li>
-         <li><a href="/page/signout.html">Sign out </a></li>
-        <li><a href="/page/login.html">Login</a></li>
-        <li><a href="/page/leaderboard.html">Leaderboard</a></li>
-        <li><a href="/page/profile.html">Profile</a></li>
-
-      
-
-       </ul>
-
-    </nav>
-
-    <div class = "content">
-
-    <div class = "login">
-
-        <form action="POST">
-
-            <label for="username">Username</label>
-            <input type="text" name = "username" id = "username" placeholder="Username">
-            <label for="password"Password> Password </label>
-            <input type="password" name = password id =" password" placeholder="password">
-            <button id = "signin">Sign In</button>
-
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm" action="#" method="POST" name="loginForm">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" 
+                       pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" 
+                       title="Enter a valid email address" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <div class="form-group">
+                <button type="submit" id="signInBtn" name="signInBtn">Sign In</button>
+            </div>
         </form>
-
-
+        <p>Don't have an account? <a href="register.html">Register</a></p>
     </div>
-
-
-
-
-    
-</div>
-
-    <footer class = "footpage">
-
-        <div id = "contact">
-            <h2>Contact Information</h2>
-            <p>Email: choremangement.com</p>
-            <p>Phone: (+257) 61600443</p>
-        </div>
-
-        <div id = "links">
-            <h2>Quick Links</h2>
-            <ul>
-                <li><a href="/page/home.html">Home</a></li>
-                <li><a href="/page/chore.html">Chore</a></li>
-                <li><a href="/page/setting.html">Setting</a></li>
-                <li><a href="/page/signup.html">Sign Up</a></li>
-                 <li><a href="/page/signout.html">Sign out </a></li>
-                <li><a href="/page/login.html">Login</a></li>
-                <li><a href="/page/leaderboard.html">Leaderboard</a></li>
-                <li><a href="/page/profile.html">Profile</a></li>
-        
-                        
-            </ul>
-
-        </div>
-    
-    </footer>
-
-    
-
-
-    
 </body>
 </html>
-   
