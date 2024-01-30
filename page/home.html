@@ -27,7 +27,11 @@
             text-decoration: none;
             font-size: 18px;
             margin-bottom: 15px;
+            min-width:200px ;
+            padding-bottom: 40px;
         }
+
+       
 
         .welcome-container {
             background-color: #fff;
@@ -66,8 +70,8 @@
         }
 
         h2 {
-            color: #368983;
-            text-align: left;
+            color:white;
+            text-align: center;
         }
 
         table {
@@ -111,10 +115,14 @@
 </head>
 <body>
     <div class="navbar">
+
         <a href="#">Chore MS</a>
         <a href="home.html">Home</a>
         <a href="chore.html">Manage Chores</a>
         <a href="addChore.html">Create Chore</a>
+        <a href="signout.html">Logout</a>
+
+
         <!-- Add more links as needed -->
     </div>
 
@@ -153,12 +161,12 @@
             <tbody>
                 <!-- Sample ongoing/pending chore data -->
                 <tr>
-                    <td>Mow the Lawn</td>
-                    <td>John Doe</td>
+                    <td>Cleaning</td>
+                    <td>Eddy Kubwimana</td>
                     <td>2024-02-01</td>
                     <td>2024-02-15</td>
                     <td>Pending</td>
-                    <td><button class="action-button" onclick="markAsCompleted('Mow the Lawn')">Mark as Completed</button></td>
+                    <td><button class="action-button" onclick="markAsCompleted()">Mark as Completed</button></td>
                 </tr>
                 <tr>
                     <td>Wash Dishes</td>
@@ -166,7 +174,7 @@
                     <td>2024-02-03</td>
                     <td>2024-02-10</td>
                     <td>In Progress</td>
-                    <td><button class="action-button" onclick="markAsCompleted('Wash Dishes')">Mark as Completed</button></td>
+                    <td><button class="action-button" onclick="markAsCompleted()">Mark as Completed</button></td>
                 </tr>
             </tbody>
         </table>
@@ -174,8 +182,13 @@
 
     <script>
         function redirectToChoreManagement(status) {
-            // Redirect to the chore management page with the selected status
+        
             window.location.href = 'chore.html?status=' + status;
+        }
+
+        function markAsCompleted() {
+            // Add your logic to update the chore status (e.g., mark as completed)
+            alert(' marked as completed!');
         }
     </script>
 </body>

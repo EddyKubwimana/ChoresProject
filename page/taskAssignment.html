@@ -5,10 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Assignment</title>
 
-    <!-- External CSS Styles -->
-    <link rel="stylesheet" href="styles.css">
-
-    <!-- Inline CSS Styles -->
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -133,18 +129,18 @@
         <form id="assignChoreForm" action="#" method="POST" name="assignChoreForm">
             <label for="assignPerson">Assign Person:</label>
             <select id="assignPerson" name="assignPerson" required>
-                <!-- Populate with dynamically fetched or hardcoded person names -->
+              
                 <option value="person1">Person 1</option>
                 <option value="person2">Person 2</option>
-                <!-- Add more options as needed -->
+             
             </select>
 
             <label for="assignChore">Assign Chore:</label>
             <select id="assignChore" name="assignChore" required>
-                <!-- Populate with dynamically fetched or hardcoded chore names -->
+               
                 <option value="chore1">Chore 1</option>
                 <option value="chore2">Chore 2</option>
-                <!-- Add more options as needed -->
+                
             </select>
 
             <label for="dueDate">Due Date:</label>
@@ -168,9 +164,9 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Sample assigned chore data -->
+               
                 <tr>
-                    <td>Mow the Lawn</td>
+                    <td>cleaning</td>
                     <td>Person 1</td>
                     <td>2024-02-01</td>
                     <td>2024-02-15</td>
@@ -182,12 +178,22 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Wash Dishes</td>
+                    <td>Mowing</td>
                     <td>Person 2</td>
                     <td>2024-02-03</td>
                     <td>2024-02-10</td>
                     <td>In Progress</td>
                     <td class="action-buttons">
-                        <button class="edit-button" onclick="editAssignedChore(2)">Edit</button>
-                        <button class="complete-button" onclick="markChoreComplete(2)">Complete</button>
-                        <button class="incomplete-button" onclick="mark
+                        <button class="edit-button" onclick="editAssignedChore(1)">Edit</button>
+                        <button class="complete-button" onclick="markChoreComplete(1)">Complete</button>
+                        <button class="incomplete-button" onclick="markChoreIncomplete(1)">Incomplete</button>
+                    </td>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</body>
+

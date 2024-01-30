@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Chore</title>
 
-    <!-- External CSS Styles -->
-    <link rel="stylesheet" href="styles.css">
 
-    <!-- Inline CSS Styles -->
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -33,8 +30,9 @@
             text-decoration: none;
             font-size: 18px;
             margin-bottom: 15px;
+            min-width:200px ;
+            padding-bottom: 40px;
         }
-
         .chore-container {
             background-color: #fff;
             padding: 20px;
@@ -135,16 +133,16 @@
         <a href="home.html">Home</a>
         <a href="chore.html">Manage Chores</a>
         <a href="addChore.html">Create Chore</a>
-        <!-- Add more links as needed -->
     </div>
     
     <div class="chore-container">
+
         <h2>Create New Chore</h2>
-        <form id="choreForm" action="#" method="POST" name="choreForm">
+        <form id="choreForm" action="POST" method="POST" name="choreForm">
             <label for="choreName">Chore Name:</label>
             <input type="text" id="choreName" name="choreName" placeholder="Enter chore name" required>
 
-            <!-- Add more input fields as needed -->
+       
 
             <button type="submit" id="createChoreBtn" name="createChoreBtn">Create Chore</button>
         </form>
@@ -159,10 +157,10 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Sample chore data -->
+              
                 <tr>
                     <td>1</td>
-                    <td>Mow the Lawn</td>
+                    <td >Mow the Lawn</td>
                     <td class="action-buttons">
                         <button class="edit-button" onclick="editChore(1)">Edit</button>
                         <button class="delete-button" onclick="deleteChore(1)">Delete</button>
@@ -176,21 +174,35 @@
                         <button class="delete-button" onclick="deleteChore(2)">Delete</button>
                     </td>
                 </tr>
-                <!-- Add more chore entries as needed -->
+            
             </tbody>
         </table>
     </div>
 
     <script>
         function editChore(choreId) {
-            // Add your logic for editing a chore entry
-            alert('Editing Chore ID: ' + choreId);
+
+
+            var chore = document.getElementsByTagName("td")
+            
+
+          
+
+        
+
+
+
         }
 
-        function deleteChore(choreId) {
-            // Add your logic for deleting a chore entry
-            alert('Deleting Chore ID: ' + choreId);
+
+        function deleteChore(choreId){
+         
+            var chore = document.getElementsByClassName("td")
+
+        
+
         }
+       
     </script>
 </body>
 </html>

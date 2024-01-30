@@ -4,11 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chore Management</title>
-
-    <!-- External CSS Styles -->
-    <link rel="stylesheet" href="styles.css">
-
-    <!-- Inline CSS Styles -->
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -33,6 +28,8 @@
             text-decoration: none;
             font-size: 18px;
             margin-bottom: 15px;
+            min-width:200px ;
+            padding-bottom: 40px;
         }
 
         .chore-container {
@@ -112,22 +109,22 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Sample ongoing/pending chore data -->
+              
                 <tr>
-                    <td>Mow the Lawn</td>
-                    <td>John Doe</td>
+                    <td>Mow </td>
+                    <td>Claire NAHIMANA</td>
                     <td>2024-02-01</td>
                     <td>2024-02-15</td>
                     <td>Pending</td>
-                    <td><button class="action-button" onclick="markAsCompleted('Mow the Lawn')">Mark as Completed</button></td>
+                    <td><button class="action-button" onclick="markAsCompleted()">Mark as Completed</button></td>
                 </tr>
                 <tr>
                     <td>Wash Dishes</td>
-                    <td>Jane Smith</td>
+                    <td>Jane KAburayo</td>
                     <td>2024-02-03</td>
                     <td>2024-02-10</td>
                     <td>In Progress</td>
-                    <td><button class="action-button" onclick="markAsCompleted('Wash Dishes')">Mark as Completed</button></td>
+                    <td><button class="action-button" onclick="markAsCompleted()">Mark as Completed</button></td>
                 </tr>
             </tbody>
         </table>
@@ -144,17 +141,17 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Sample completed chore data -->
+               
                 <tr>
-                    <td>Vacuum Living Room</td>
-                    <td>Alice Johnson</td>
+                    <td>Washing clothes</td>
+                    <td>Steve Nsabimana</td>
                     <td>2024-01-25</td>
                     <td>2024-02-05</td>
                     <td>Completed</td>
                 </tr>
                 <tr>
                     <td>Clean Windows</td>
-                    <td>Bob Williams</td>
+                    <td> Williams Hatungima</td>
                     <td>2024-01-30</td>
                     <td>2024-02-10</td>
                     <td>Complseted</td>
@@ -164,9 +161,9 @@
     </div>
 
     <script>
-        function markAsCompleted(choreName) {
-            // Add your logic to update the chore status (e.g., mark as completed)
-            alert(choreName + ' marked as completed!');
+        function markAsCompleted() {
+
+            alert(' marked as completed!');
         }
     </script>
 </body>

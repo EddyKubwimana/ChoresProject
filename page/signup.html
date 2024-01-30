@@ -98,16 +98,16 @@
             </div>
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Enter a valid email address" required>
+                <input type="email" id="email" name="email" onchange="isValidEmail()" required>
             </div>
-            <div class="form-group">
+            <div class="form-group" >
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" placeholder="Enter your password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" 
-                       title="Minimum 8 characters, at least one uppercase letter, one lowercase letter, one number, and one special character" required>
+                <input type="password" id="password" name="password" placeholder="Enter your password" onchange="isStrongPassword()">
             </div>
-            <div class="form-group">
+            <div class="form-group" id ="passwordform">
+                <label id = "info"></label>
                 <label for="confirmPassword">Retype Password:</label>
-                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Retype your password" required>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Retype your password" onchange="checkSimilarity()" required>
             </div>
             <div class="form-group">
                 <button type="submit" id="registerBtn" name="registerBtn">Register</button>
@@ -115,5 +115,96 @@
         </form>
         <p>Already have an account? <a href="login.html">Login</a></p>
     </div>
+
+    <script>
+
+        function checkSimilarity(){
+
+
+            var password = document.getElementById("password")
+
+            var confirmPassword = document.getElementById("confirmPassword")
+
+            var p = password.value
+            var c = confirmPassword.value
+
+            if(p===c){
+
+               var form = document.getElementById("passwordform")
+
+               var label = form.querySelector("#info")
+
+               confirmPassword.style.color = "black"
+
+               form.removeChild(label)
+
+            } else{
+
+                var label = document.getElementById("info")
+                label.innerHTML = "<p> The password do not match</p>"
+                label.style.color = "red"
+
+                confirmPassword.style.color = "red"
+
+
+            }
+        
+        }
+
+
+        function isValidEmail() {
+    
+                var regex = /@ashesi\.edu\.gh$/;
+
+                var password = document.getElementById("email")
+
+                if (regex.test(password.value)){
+
+                    
+                    password.style.color = "black"
+
+                } else{
+
+
+       
+
+                password.style.color = "red"
+
+                password.value = "The email is not valid"
+
+
+            };
+}
+
+
+    function isStrongPassword(password) {
+        
+        var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        var password = document.getElementById("password")
+
+        if (regex.test(password.value)){
+
+            password.style.color = "black"
+
+            
+
+            
+        }
+
+        else{
+
+            password.style.color = "red"
+            password.value =""
+            password.defaultValue = "The password is weak"
+
+
+        }
+
+
+    }
+
+
+
+    </script>
 </body>
 </html>
