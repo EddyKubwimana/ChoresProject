@@ -17,7 +17,8 @@
 
         .register-container {
             background-color: #fff;
-            padding: 20px;
+           margin-top: 700px;
+           padding : 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 400px;
@@ -59,20 +60,24 @@
             cursor: pointer;
             font-size: 16px;
         }
+
+    
     </style>
 </head>
 <body>
     <div class="register-container">
+
         <h2>Register</h2>
-        <form id="registerForm" action="#" method="POST" name="registerForm">
+        <form id="registerForm" action="/labProject/login/register.php" method="post" name="registerForm">
             <div class="form-group">
                 <label for="firstName">First Name:</label>
-                <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" pattern="[A-Za-z]+" title="Only letters allowed" required>
+                <input type="text" id="firstName" name="fname" placeholder="Enter your first name" pattern="[A-Za-z]+" title="Only letters allowed" required>
             </div>
             <div class="form-group">
                 <label for="lastName">Last Name:</label>
-                <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" pattern="[A-Za-z]+" title="Only letters allowed" required>
+                <input type="text" id="lastName" name="lname" placeholder="Enter your last name" pattern="[A-Za-z]+" title="Only letters allowed" required>
             </div>
+            
             <div class="form-group">
                 <label for="gender">Gender:</label>
                 <label><input type="radio" name="gender" id="male" value="0"> Male</label>
@@ -80,7 +85,7 @@
             </div>
             <div class="form-group">
                 <label for="familyRole">Family Role:</label>
-                <select id="familyRole" name="familyRole" required>
+                <select id="familyRole" name="fid" required>
                     <option value="0">Select</option>
                     <option value="1">Father</option>
                     <option value="2">Mother</option>
@@ -94,7 +99,7 @@
             </div>
             <div class="form-group">
                 <label for="phone">Phone Number:</label>
-                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" pattern="[0-9]{10,}" title="Enter a valid 10-digit phone number" required>
+                <input type="tel" id="phone" name="tel" placeholder="Enter your phone number" pattern="[0-9]{10,}" title="Enter a valid 10-digit phone number" required>
             </div>
             <div class="form-group">
                 <label for="email">Email:</label>
@@ -102,7 +107,7 @@
             </div>
             <div class="form-group" >
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" placeholder="Enter your password" onchange="isStrongPassword()">
+                <input type="password" id="password" name="passwd" placeholder="Enter your password" onchange="isStrongPassword()">
             </div>
             <div class="form-group" id ="passwordform">
                 <label id = "info"></label>
