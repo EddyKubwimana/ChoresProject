@@ -3,24 +3,29 @@ set_include_path('/Users/macuser/Sites/localhost/labProject/setting/');
 
 require_once('connection.php');
 
-  $pid = $_POST['pid'];
-  $fid = $_POST['fid'];
-  $fname = $_POST['fname'];
-  $lname = $_POST['lname'];
-  $email = $_POST['email'];
-  $tel = $_POST['tel'];
-  $dob = $_POST['dob'];
-  $gender = $_POST['gender'];
-  $passwd = $_POST['passwd'];
+session_start();
 
+$pid = mysqli_real_escape_string($conn, $_POST['pid']);
+$fid = mysqli_real_escape_string($conn, $_POST['fid']);
+$fname = mysqli_real_escape_string($conn, $_POST['fname']);
+$lname = mysqli_real_escape_string($conn, $_POST['lname']);
+$email = mysqli_real_escape_string($conn, $_POST['email']);
+$tel = mysqli_real_escape_string($conn, $_POST['tel']);
+$dob = mysqli_real_escape_string($conn, $_POST['dob']);
+$gender = mysqli_real_escape_string($conn, $_POST['gender']);
+$passwd = mysqli_real_escape_string($conn, $_POST['passwd']);
 $hashed_password =  password_hash($passwd, PASSWORD_BCRYPT);
-
-  $sql = "INSERT INTO People (rid, fid, fname, lname, gender, dob, tel, email, passwd) VALUES ('3', '$fid', '$fname', '$lname', '$gender', '$dob', '$tel', '$email', '$hashed_password')";
+$sql = "INSERT INTO People (rid, fid, fname, lname, gender, dob, tel, email, passwd) VALUES ('3', '$fid', '$fname', '$lname', '$gender', '$dob', '$tel', '$email', '$hashed_password')";
  if ($conn->query($sql)===true){
-  header("Location:/labProject/views/home.html");
+  $_SESSION['registration_success'] = true;
+  header("Location:/labProject/login/register.php");
+  exit();
+  
  }else{
 
-  echo "failed registering ";
+  $_SESSION['registration_success'] = false;
+
+  header("Location:/labProject/login/register.php");
  };
 
  

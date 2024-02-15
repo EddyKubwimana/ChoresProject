@@ -1,5 +1,6 @@
-
-
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,6 +36,20 @@
             margin-bottom: 20px;
         }
 
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+
         .form-group label {
             display: block;
             text-align: left;
@@ -65,7 +80,9 @@
     </style>
 </head>
 <body>
- 
+
+
+
     <div class="register-container">
 
         <h2>Register</h2>
@@ -128,13 +145,34 @@
                 <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Retype your password" onchange="checkSimilarity()" required>
             </div>
             <div class="form-group">
-                <button type="submit" id="registerBtn" name="registerBtn">Register</button>
+                <button type="submit" id="registerBtn" name="registerBtn" onclick="registerSuccess()">Register</button>
             </div>
         </form>
-        <p>Already have an account? <a href="login.html">Login</a></p>
+        <p>Already have an account? <a href="/labProject/login/login.php">Login</a></p>
     </div>
 
     <script>
+
+
+        function registerSuccess(){
+
+            <?php
+
+             $_SESSION['registration_success']= true;
+
+            ?>
+
+
+            var status = '<?php echo $_SESSION['registration_success']; ?>';
+            console.log('status:', status);
+            
+        }
+
+
+
+        function redirectToLogin() {
+            window.location.href = "/labProject/login/login.php";
+        }
 
         function checkSimilarity(){
 
