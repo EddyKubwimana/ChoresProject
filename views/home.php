@@ -1,3 +1,23 @@
+<?php
+
+session_start();
+if (isset($_SESSION["userId"]) && $_SESSION["userId"]) {
+
+include("../setting/connection.php");
+$sql = "SELECT fname,lname FROM People WHERE pid ='$_SESSION[userId]'";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
+
+$username = $row["fname"].' '.$row["lname"];
+}
+
+else{
+
+    header("Location:/choreProject/login/login.php");
+    exit();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,6 +49,12 @@
             margin-bottom: 15px;
             min-width:200px ;
             padding-bottom: 40px;
+        }
+
+        #username{
+
+            padding:3px;
+            text-align: right;
         }
 
        
@@ -115,19 +141,21 @@
 </head>
 <body>
     <div class="navbar">
-
         <a href="#">Chore MS</a>
-        <a href="home.html">Home</a>
-        <a href="chore.html">Manage Chores</a>
-        <a href="addChore.html">Create Chore</a>
-        <a href="signout.html">Logout</a>
-
-
-        <!-- Add more links as needed -->
+        <a href="home.php"> <img src =../asset/home.png> Home</a>
+        <a href="chore.html"> <img src =../asset/manage.png>Manage Chores</a>
+        <a href="addChore.php"> <img src =../asset/create.png>Create Chore</a>
+        <a href="../login/logout.php"> <img src =../asset/logout.png>Logout</a>
     </div>
 
     <div class="welcome-container">
+        <div id = "username">
+
+          <h1><img src =../asset/user.png><?php echo"$username"; ?></h1>
+
+        </div>
         <h1>Welcome to Chore Manager</h1>
+        
 
         <div class="statistics-box">
             <div class="box" onclick="redirectToChoreManagement('in-progress')">
@@ -159,14 +187,14 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Sample ongoing/pending chore data -->
+              
                 <tr>
                     <td>Cleaning</td>
                     <td>Eddy Kubwimana</td>
                     <td>2024-02-01</td>
                     <td>2024-02-15</td>
                     <td>Pending</td>
-                    <td><button class="action-button" onclick="markAsCompleted()">Mark as Completed</button></td>
+                    <td><button class="action-button" onclick="markAsCompleted()"><img src =../asset/completed.png></button></td>
                 </tr>
                 <tr>
                     <td>Wash Dishes</td>
@@ -174,7 +202,7 @@
                     <td>2024-02-03</td>
                     <td>2024-02-10</td>
                     <td>In Progress</td>
-                    <td><button class="action-button" onclick="markAsCompleted()">Mark as Completed</button></td>
+                    <td><button class="action-button" onclick="markAsCompleted()"><img src =../asset/completed.png></button></td>
                 </tr>
             </tbody>
         </table>
@@ -193,3 +221,4 @@
     </script>
 </body>
 </html>
+

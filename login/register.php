@@ -8,75 +8,92 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register Page</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #368983;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-        }
+    body {
+    font-family: Arial, sans-serif;
+    background-image:  url(../asset/niceBackground.jpeg);
+    margin: 0;
+    padding: 0;
+}
 
-        .register-container {
-            background-color: #fff;
-           margin-top: 700px;
-           padding : 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 400px;
-            text-align: center;
-        }
+.register-container {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-        .register-container h2 {
-            color: #368983;
-        }
+.form-group {
+    margin-bottom: 15px;
+}
 
-        .form-group {
-            margin-bottom: 20px;
-        }
+label {
+    display: block;
+    margin-bottom: 5px;
+}
 
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 20px;
-        }
+input,
+select,
+button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
 
-        .form-group label {
-            display: block;
-            text-align: left;
-            font-size: 14px;
-            color: #555;
-            margin-bottom: 5px;
-        }
+input[type="radio"] {
+    margin-right: 5px;
+}
 
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 8px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 14px;
-            margin-top: 5px;
-        }
+button {
+    background-color: #4caf50;
+    color: #ffffff;
+    cursor: pointer;
+}
 
-        .form-group button {
-            background-color: #368983;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
+button:hover {
+    background-color: #45a049;
+}
+
+a {
+    text-decoration: none;
+    color: #3498db;
+}
+
+a:hover {
+    color: #1e87f0;
+}
+    .overlay {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+    }
+
+    .popup {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #368983;
+    }
+
+    .popup button {
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+       }
+
+        
     </style>
 </head>
 <body>
@@ -85,8 +102,49 @@ session_start();
 
     <div class="register-container">
 
+    <?php
+    session_start();
+
+    // Check if the email is not duplicated
+    if(isset($_SESSION['duplicatedEmail']) && $_SESSION['duplicatedEmail'] === true) {
+        echo "<div class='overlay'>
+                <div class='popup'>
+                    <p>The user already exist. Please login !</p>
+                    <button onclick='closePopupun()'>OK</button>
+                </div>
+              </div>";
+
+        unset($_SESSION["duplicatedEmail"]);
+    }
+
+
+   
+    if(isset($_SESSION['registration']) && $_SESSION['registration'] === true) {
+        echo "<div class='overlay'>
+                <div class='popup'>
+                    <p>Registration successful! Please click the button to go to the login page.</p>
+                    <button onclick='closePopupun()'>OK</button>
+                </div>
+              </div>";
+
+        unset($_SESSION["registration"]);
+    }
+
+    if(isset($_SESSION['registration']) && $_SESSION['registration'] === false){
+        echo "<div class='overlay'>
+                <div class='popup'>
+                    <p>Registration failed! Please try again.</p>
+                    <button onclick='closePopupdeux()'>OK</button>
+                </div>
+              </div>";
+
+        unset($_SESSION["registration"]);
+    }
+?>
+        
+
         <h2>Register</h2>
-        <form id="registerForm" action="/labProject/action/register_user.php" method="post" name="registerForm">
+        <form id="registerForm" action="../action/register_user.php" method="post" name="registerForm">
             <div class="form-group">
                 <label for="firstName">First Name:</label>
                 <input type="text" id="firstName" name="fname" placeholder="Enter your first name" pattern="[A-Za-z]+" title="Only letters allowed" required>
@@ -106,23 +164,23 @@ session_start();
                 <select id="familyRole" name="fid" required>
                     <option value="0">Select</option>
 
-                <?php
-                set_include_path('/Users/macuser/Sites/localhost/labProject/setting/');
+                    <?php
+                        require_once "../setting/connection.php";
+                        $sql = "SELECT fid, fam_name FROM Family_name";
+                        $result = $conn->query($sql);
+            
+                        while ($row = $result->fetch_assoc()) {
+                                    $roleId = $row['fid'];
+                                    $roleName = $row['fam_name'];
+                                    echo "<option value='$roleId'>$roleName</option>";
+                        }
+                    ?>
 
-                require_once('connection.php'); 
-
-                $sql = "SELECT fid, fam_name FROM Family_name";
-                $result = $conn->query($sql);
-    
-                while ($row = $result->fetch_assoc()) {
-                            $roleId = $row['fid'];
-                            $roleName = $row['fam_name'];
-                            echo "<option value='$roleId'>$roleName</option>";
-                }
-                ?>
+                
                     
                 </select>
             </div>
+
             <div class="form-group">
                 <label for="dob">Date of Birth:</label>
                 <input type="date" id="dob" name="dob" placeholder="Select your date of birth" required>
@@ -145,33 +203,19 @@ session_start();
                 <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Retype your password" onchange="checkSimilarity()" required>
             </div>
             <div class="form-group">
-                <button type="submit" id="registerBtn" name="registerBtn" onclick="registerSuccess()">Register</button>
+                <button type="submit" id="registerBtn" name="registerBtn">Register</button>
             </div>
         </form>
-        <p>Already have an account? <a href="/labProject/login/login.php">Login</a></p>
+        <p>Already have an account? <a href="/choreProject/login/login.php">Login</a></p>
     </div>
 
     <script>
 
 
-        function registerSuccess(){
-
-            <?php
-
-             $_SESSION['registration_success']= true;
-
-            ?>
-
-
-            var status = '<?php echo $_SESSION['registration_success']; ?>';
-            console.log('status:', status);
-            
-        }
-
 
 
         function redirectToLogin() {
-            window.location.href = "/labProject/login/login.php";
+            window.location.href = "/choreProject/login/login.php";
         }
 
         function checkSimilarity(){
@@ -255,13 +299,26 @@ session_start();
 
 
         }
+                }
+
+                function closePopupun() {
+                window.location.href = "/choreProject/login/login.php";
+                $(".overlay").remove();
+                
 
 
-    }
+            }
 
+            function closePopupdeux() {
+                window.location.href = "/choreProject/login/register.php";
+                $(".overlay").remove();
+                
+                
 
-
+            }
     </script>
+
+
 </body>
 </html>
 
