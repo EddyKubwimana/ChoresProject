@@ -1,5 +1,13 @@
 <?php
 session_start();
+
+
+
+include("../setting/core.php");
+isnotLogin();
+?>
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,5 +1,9 @@
 
+<?php
 
+include("../setting/core.php");
+isLogIn();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +16,7 @@
         body {
             font-family: 'Arial', sans-serif;
             background-color: #f0f0f0;
+            background-image: url(../asset/login.jpeg);
             margin: 0;
             padding: 0;
             display: flex;
@@ -163,9 +168,9 @@
 <body>
     <div class="navbar">
         <a href="#">Chore MS</a>
-        <a href="home.php"> <img src =../asset/home.png> Home</a>
-        <a href="chore.html"> <img src =../asset/manage.png>Manage Chores</a>
-        <a href="addChore.php"> <img src =../asset/create.png>Create Chore</a>
+        <a href="../views/home.php"> <img src =../asset/home.png> Home</a>
+        <a href="../views/chore.html"> <img src =../asset/manage.png>Manage Chores</a>
+        <a href="chore_control_view.php"> <img src =../asset/create.png>Create Chore</a>
         <a href="../login/logout.php"> <img src =../asset/logout.png>Logout</a>
 
     </div>
@@ -181,6 +186,7 @@
                
         
                     <button onclick='closePopupun()'type="submit" id="createChoreBtn" name="createChoreBtn">Create Chore</button>
+        
                 </form>
                
             </div>
@@ -202,20 +208,19 @@
 
             <?php
                         require_once "../setting/connection.php";
-                        $sql = "SELECT cid, chorname FROM chores";
+                        $sql = "SELECT cid, chorename FROM Chores";
                         $result = $conn->query($sql);
             
                         while ($row = $result->fetch_assoc()) {
                             
                                     $cid = $row['cid'];
-                                    $chorname = $row['chorname'];
+                                    $chorname = $row['chorename'];
                                     echo"<tr id = '$cid'>";
                                     echo "<td>$cid</td>";
                                     echo "<td>$chorname</td>";
                                     echo "<td><button class='edit-button' onclick='editChore($cid)'><img src ='../asset/edit.png'></button>
                                     <button class='delete-button' onclick='deleteChore($cid)'><img src ='../asset/delete.png'></button></td>";
                                     echo"</tr>";
-
 
                         }
 
@@ -226,31 +231,19 @@
 
     <script>
 
+    function editChore(choreId) {
+        var chore = document.getElementById(choreId);
+        var cid = choreId; 
 
-        function editChore(choreId) {
-            var chore = document.getElementById(choreId);
+        var container = document.getElementById("chore-container");
 
-            
-
-            var container = document.getElementById("chore-container");
-
-            var overlay = document.createElement("div");
-            overlay.classList.add("overlay");
-            overlay.style.display = "flex";
-            overlay.setAttribute("myclass","overlay");
-            overlay.innerHTML= "<div class='popup'><form id= 'choreForm' action='../action/update_chore.php' method ='get' name='choreForm'><label for='choreName'>update the chore name:</label><input type='text' id='choreName' name='choreName' placeholder='Enter the updated name' required><button onclick='closePopupun()'type='submit' id='createChoreBtn' name='createChoreBtn'>update</button> </form><button onclick ='closePopupdeux()'>cancel</button></div>";
-            container.appendChild(overlay);
-
-
-            
-
-          
-
-        
-
-
-
-        }
+        var overlay = document.createElement("div");
+        overlay.classList.add("overlay");
+        overlay.style.display = "flex";
+        overlay.setAttribute("myclass","overlay");
+        overlay.innerHTML= "<div class='popup'><form id='choreForm' action='../action/update_chore.php' method ='get' name='cid'><label for='cid'>id:</label><input type='number' name='cid' value='" + cid + "' readonly><label for='choreName'>update the chore name:</label><input type='text' id='choreName' name='choreName' placeholder='Enter the updated name' required><button onclick='closePopupun()' type='submit' id='createChoreBtn' name='createChoreBtn'>update</button></form><button onclick='closePopupdeux()'>cancel</button></div>";
+        container.appendChild(overlay);
+    }
 
 
         function deleteChore(choreId){
@@ -264,7 +257,7 @@
             overlay.style.display = "flex";
 
             overlay.setAttribute("myclass","overlay");
-            overlay.innerHTML= "<div class='popup' <p>Do you want to delete the chore! .</p> <button onclick='closePopupdeux()'>Delete</button> <button onclick='closePopupdeux()'>Cancel</button> </div>"
+            overlay.innerHTML= "<div class='popup' <p>Do you want to delete the chore! .</p> <button onclick=deletion("+choreId+")>Delete</button> <button onclick='closePopupdeux()'>Cancel</button> </div>"
             container.appendChild(overlay);
             
 
@@ -281,7 +274,7 @@
             }
 
             function closePopupdeux() {
-                window.location.href = "addChore.php";
+                window.location.href = "chore_control_view.php";
                 $(".overlay").remove();
                 
                 
@@ -295,7 +288,16 @@
 
 
            }
+
+
+        
+    function deletion(choreId){
+
+    window.location.href = "../action/delete_chore.php?cid="+choreId+"";
+
+    }
        
-    </script>
+ </script>
+
 </body>
 </html>

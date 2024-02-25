@@ -4,12 +4,12 @@ session_start();
 include("../setting/connection.php");
 $chorname= $_POST['choreName'];
  
-$sql = " INSERT INTO chores(chorname) values('$chorname')";
+$sql = " INSERT INTO Chores(chorename) values('$chorname')";
 $result = mysqli_query($conn, $sql);
   
 if ($result) {
     $_SESSION["successChore"] = true;
-    header("Location:/choreProject/views/addChore.php");
+    header("Location:/choreProject/admin/chore_control_view.php");
     exit() ;
       
   } else {

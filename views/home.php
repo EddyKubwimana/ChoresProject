@@ -28,6 +28,7 @@ else{
         body {
             font-family: 'Arial', sans-serif;
             background-color: #f0f0f0;
+            background-image: url(../asset/login.jpeg);
             margin: 0;
             padding: 0;
             display: flex;
@@ -144,7 +145,7 @@ else{
         <a href="#">Chore MS</a>
         <a href="home.php"> <img src =../asset/home.png> Home</a>
         <a href="chore.html"> <img src =../asset/manage.png>Manage Chores</a>
-        <a href="addChore.php"> <img src =../asset/create.png>Create Chore</a>
+        <a href="../admin/chore_control_view.php"> <img src =../asset/create.png>Create Chore</a>
         <a href="../login/logout.php"> <img src =../asset/logout.png>Logout</a>
     </div>
 

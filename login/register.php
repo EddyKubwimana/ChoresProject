@@ -10,7 +10,7 @@ session_start();
     <style>
     body {
     font-family: Arial, sans-serif;
-    background-image:  url(../asset/niceBackground.jpeg);
+    background-image: url(../asset/login.jpeg);
     margin: 0;
     padding: 0;
 }

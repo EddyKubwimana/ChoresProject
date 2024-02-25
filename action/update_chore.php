@@ -5,12 +5,12 @@ include("../setting/connection.php");
 $chorname= $_GET['choreName'];
 $cid = $_GET['cid'];
  
-$sql = " UPDATE  chores SET chorname = '$chorname' where  cid = $cid";
+$sql = " UPDATE  Chores SET chorename = '$chorname' where  cid = $cid";
 $result = mysqli_query($conn, $sql);
   
 if ($result) {
     $_SESSION["successupdate"] = true;
-    header("Location:/choreProject/views/addChore.php");
+    header("Location:/choreProject/admin/chore_control_view.php");
     exit() ;
       
   } else {

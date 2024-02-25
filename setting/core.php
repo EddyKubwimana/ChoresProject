@@ -1,14 +1,57 @@
 <?php
-  $db_host = '127.0.0.1';
-  $db_user = 'root';
-  $db_password = 'Ilove@Coding1';
-  $db_db = 'chores_mgt';
-  $db_port = 8889;
 
-  $mysqli = new mysqli(
-    $db_host,
-    $db_user,
-    $db_password,
-    $db_db,
-	$db_port
-  );
+function isAdmin($userRole) {
+
+  if($userRole=="admin") {
+
+
+  }else{
+
+
+
+  }
+
+
+}
+
+
+function isLogIn(){
+    session_start();
+    if (isset($_SESSION["userId"]) && $_SESSION["userId"]) {
+
+
+        
+    }
+
+    else{
+
+        header("Location:/choreProject/login/login.php");
+        exit();
+    }
+
+}
+
+
+function isnotLogin(){
+
+  session_start();
+    if (isset($_SESSION["userId"]) && $_SESSION["userId"]) {
+
+      header("Location:/choreProject/views/home.php");
+      exit();
+
+        
+    }
+
+    else{
+
+       
+    }
+
+
+}
+
+
+
+
+?>

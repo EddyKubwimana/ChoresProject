@@ -1,4 +1,9 @@
-]<!DOCTYPE html>
+<?php
+
+include("../setting/core.php");
+isLogIn();
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,6 +14,7 @@
         body {
             font-family: 'Arial', sans-serif;
             background-color: #f0f0f0;
+            background-image: url(../asset/login.jpeg);
             margin: 0;
             padding: 0;
             display: flex;

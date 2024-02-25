@@ -6,7 +6,6 @@ include("../setting/connection.php");
   $password = $_POST['password'];
   $sql = "SELECT pid, rid, passwd FROM People WHERE email = '$email'";
   $result = mysqli_query($conn, $sql);
-  
   if ($result) {
       $row = mysqli_fetch_assoc($result);
   
@@ -29,10 +28,25 @@ include("../setting/connection.php");
           }
         
         }
+    else{
+
+      $_SESSION['loginFailed'] = true;
+      header("Location:/choreProject/login/login.php");
+      exit();
+
+
+
+
+    }
       
   } else {
-      echo "Error: " . mysqli_error($conn);
+    $handler = true;
+    $_SESSION['loginFailed'] = true;
+    echo "Error: " . mysqli_error($conn);
+    header("Location:/choreProject/login/login.php");
+    exit();
+    
   }
-  
+
   mysqli_close($conn);
 ?>
