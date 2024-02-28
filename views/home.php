@@ -146,7 +146,7 @@ else{
         <a href="home.php"> <img src =../asset/home.png> Home</a>
         <a href="chore.html"> <img src =../asset/manage.png>Manage Chores</a>
         <a href="../admin/chore_control_view.php"> <img src =../asset/create.png>Create Chore</a>
-        <a href = "taskAssignment.php"><img src= ../asset/update.png>Assign Task</a>
+        <a href = "../admin/assign_chore_view.php"><img src= ../asset/update.png>Assign Chore</a>
         <a href="../login/logout.php"> <img src =../asset/logout.png>Logout</a>
     </div>
 
