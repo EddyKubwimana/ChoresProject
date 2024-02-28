@@ -2,8 +2,9 @@
 <?php
 session_start();
 include("../setting/connection.php");
-  $email = $_POST['email'];
-  $password = $_POST['password'];
+  $email = mysqli_real_escape_string($conn,$_POST['email']);
+  $password = mysqli_real_escape_string($conn,$_POST['password']);
+  
   $sql = "SELECT pid, rid, passwd FROM People WHERE email = '$email'";
   $result = mysqli_query($conn, $sql);
   if ($result) {

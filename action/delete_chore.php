@@ -1,8 +1,7 @@
 <?php
 session_start();
 include("../setting/connection.php");
-$cid= $_GET['cid'];
-
+$cid=mysqli_real_escape_string($conn,$_GET['cid']);
 $sql = "DELETE FROM Chores where cid = $cid";
 $result = mysqli_query($conn, $sql);
 if ($result) {

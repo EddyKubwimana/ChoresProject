@@ -2,7 +2,8 @@
 <?php
 session_start();
 include("../setting/connection.php");
-$chorname= $_POST['choreName'];
+
+$chorname= mysqli_real_escape_string($conn,$_POST['choreName']);
  
 $sql = " INSERT INTO Chores(chorename) values('$chorname')";
 $result = mysqli_query($conn, $sql);

@@ -166,13 +166,13 @@ isLogIn();
     </style>
 </head>
 <body>
-    <div class="navbar">
+   <div class="navbar">
         <a href="#">Chore MS</a>
         <a href="../views/home.php"> <img src =../asset/home.png> Home</a>
         <a href="../views/chore.html"> <img src =../asset/manage.png>Manage Chores</a>
         <a href="chore_control_view.php"> <img src =../asset/create.png>Create Chore</a>
+        <a href = "../views/taskAssignment.php"><img src= ../asset/update.png>Assign Task</a>
         <a href="../login/logout.php"> <img src =../asset/logout.png>Logout</a>
-
     </div>
 
     
