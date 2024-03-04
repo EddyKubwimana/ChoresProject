@@ -1,5 +1,7 @@
 <?php
 session_start();
+include("../setting/connection.php");
+require_once "../function/select_role.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -103,8 +105,6 @@ a:hover {
     <div class="register-container">
 
     <?php
-    session_start();
-
     // Check if the email is not duplicated
     if(isset($_SESSION['duplicatedEmail']) && $_SESSION['duplicatedEmail'] === true) {
         echo "<div class='overlay'>
@@ -165,15 +165,9 @@ a:hover {
                     <option value="0">Select</option>
 
                     <?php
-                        require_once "../setting/connection.php";
-                        $sql = "SELECT fid, fam_name FROM Family_name";
-                        $result = $conn->query($sql);
-            
-                        while ($row = $result->fetch_assoc()) {
-                                    $roleId = $row['fid'];
-                                    $roleName = $row['fam_name'];
-                                    echo "<option value='$roleId'>$roleName</option>";
-                        }
+
+                        selectRole($conn);
+        
                     ?>
 
                 

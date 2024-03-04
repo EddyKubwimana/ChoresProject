@@ -138,6 +138,11 @@ else{
         .action-button:hover {
             background-color: #2c6e6e;
         }
+
+        .statusImage{
+            width : 30px;
+           
+        }
     </style>
 </head>
 <body>
@@ -146,6 +151,7 @@ else{
         <a href="home.php"> <img src =../asset/home.png> Home</a>
         <a href="chore.html"> <img src =../asset/manage.png>Manage Chores</a>
         <a href="../admin/chore_control_view.php"> <img src =../asset/create.png>Create Chore</a>
+        <a href ="../admin/assignment_chore_view.php"><img src= ../asset/addAssignment.png>Create Assignment</a>
         <a href = "../admin/assign_chore_view.php"><img src= ../asset/update.png>Assign Chore</a>
         <a href="../login/logout.php"> <img src =../asset/logout.png>Logout</a>
     </div>
@@ -153,7 +159,7 @@ else{
     <div class="welcome-container">
         <div id = "username">
 
-          <h1><img src =../asset/user.png><?php echo"$username"; ?></h1>
+          <h1><img class = "statusImage" src =../asset/user.png><?php echo"$username"; ?></h1>
 
         </div>
         <h1>Welcome to Chore Manager</h1>
@@ -161,14 +167,17 @@ else{
 
         <div class="statistics-box">
             <div class="box" onclick="redirectToChoreManagement('in-progress')">
+                <img class = "statusImage" src =../asset/pending.png>
                 <h2>In Progress</h2>
                 <p>12 chores</p>
             </div>
             <div class="box" onclick="redirectToChoreManagement('incomplete')">
+                <img  class = "statusImage" src =../asset/incomplete.png>
                 <h2>Incomplete</h2>
                 <p>5 chores</p>
             </div>
             <div class="box" onclick="redirectToChoreManagement('completed')">
+                <img class = "statusImage" src =../asset/completed.png>
                 <h2>Completed</h2>
                 <p>20 chores</p>
             </div>

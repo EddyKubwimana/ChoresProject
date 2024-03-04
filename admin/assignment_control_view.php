@@ -2,7 +2,11 @@
 <?php
 session_start();
 
-include("../setting/connection.php")
+include("../setting/core.php");
+include("../setting/connection.php");
+require_once "../function/select_people.php";
+require_once "../function/select_chore.php";
+isLogIn();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -143,60 +147,39 @@ include("../setting/connection.php")
     </style>
 </head>
 <body>
-    <div class="navbar">
+<div class="navbar">
         <a href="#">Chore MS</a>
-        <a href="home.php"> <img src =../asset/home.png> Home</a>
-        <a href="chore.html"> <img src =../asset/manage.png>Manage Chores</a>
-        <a href="../admin/chore_control_view.php"> <img src =../asset/create.png>Create Chore</a>
-        <a href = "taskAssignment.php"><img src= ../asset/update.png>Assign Task</a>
+        <a href="../views/home.php"> <img src =../asset/home.png> Home</a>
+        <a href="../views/chore.html"> <img src =../asset/manage.png>Manage Chores</a>
+        <a href="chore_control_view.php"> <img src =../asset/create.png>Create Chore</a>
+        <a href ="assignment_chore_view.php"><img src= ../asset/addAssignment.png>Create Assignment</a>
+        <a href ="assign_chore_view.php"><img src= ../asset/update.png>Assign Chore</a>
         <a href="../login/logout.php"> <img src =../asset/logout.png>Logout</a>
     </div>
-    
 
     <div class="chore-container">
         <h2>Assign New Chore</h2>
-        <form id="assignChoreForm" action="#" method="POST" name="assignChoreForm">
+        <form id="assignChoreForm" action="#" method="post" name="assignChoreForm">
             <label for="assignPerson">Assign Person:</label>
-            <select id="assignPerson" name="assignPerson" required>
+            <select id="assignPerson" name="sid" required>
 
                <option value="0">Select</option>
 
                 <?php
-                $sql = "SELECT pid,lname,fname FROM People";
-                $result = $conn->query($sql);
-    
-                while ($row = $result->fetch_assoc()) {
-                            $pid = $row['pid'];
-                            $fname = $row['fname'];
-                            $lname = $row['lname'];
-                            echo "<option value='$pid'>$fname   $lname </option>";
-                }
+                selectPeople($conn);
                 ?>
              
             </select>
 
             <label for="assignChore">Assign Chore:</label>
-            <select id="assignChore" name="assignChore" required>
+            <select id="assignChore" name="" required>
                
             <option value="0">Select</option>
 
             <?php
-
-                $sql = "SELECT cid, chorename FROM Chores";
-                $secondResult = $conn->query($sql);
-
-                while ($ro = $secondResult->fetch_assoc()) {
-                            $cid = $ro['cid'];
-                            $cname = $ro['chorename'];
-
-                            echo "<option value='$cid'>$cname</option>";
-                };
-
-
+               selectChore($conn);
             ?>
-
-               
-                
+ 
             </select>
 
             <label for="dueDate">Due Date:</label>
@@ -227,9 +210,9 @@ include("../setting/connection.php")
                     <td>2024-02-15</td>
                     <td>Pending</td>
                     <td class="action-buttons">
-                        <button class="edit-button" onclick="editAssignedChore(1)">Edit</button>
-                        <button class="complete-button" onclick="markChoreComplete(1)">Complete</button>
-                        <button class="incomplete-button" onclick="markChoreIncomplete(1)">Incomplete</button>
+                        <button class="edit-button" onclick="editAssignedChore(1)"><img src ="../asset/edit.png"></button>
+                        <button class="complete-button" onclick="markChoreComplete(1)"><img src ="../asset/completed.png"></button>
+                        <button class="incomplete-button" onclick="markChoreIncomplete(1)"><img src ="../asset/incomplete.png"></button>
                     </td>
                 </tr>
                 <tr>
@@ -260,4 +243,3 @@ include("../setting/connection.php")
 $conn->close();
 
 ?>
-
