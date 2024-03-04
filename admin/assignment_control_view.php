@@ -6,6 +6,7 @@ include("../setting/core.php");
 include("../setting/connection.php");
 require_once "../function/select_people.php";
 require_once "../function/select_chore.php";
+require_once "../function/select_chore_status.php";
 isLogIn();
 ?>
 <!DOCTYPE html>
@@ -46,7 +47,7 @@ isLogIn();
 
 
         
-        .chore-container {
+        .assignment-container {
             background-color: #fff;
             padding: 20px;
             border-radius: 10px;
@@ -57,7 +58,7 @@ isLogIn();
             
         }
 
-        .chore-assigned {
+        .chore-assignment {
             background-color: #fff;
             padding: 20px;
             border-radius: 10px;
@@ -126,24 +127,7 @@ isLogIn();
             color: #fff;
         }
 
-        .action-buttons {
-            display: flex;
-            justify-content: space-around;
-        }
-
-        .edit-button, .complete-button, .incomplete-button {
-            background-color: #368983;
-            color: #fff;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        .edit-button:hover, .complete-button:hover, .incomplete-button:hover {
-            background-color: #2c6e6e;
-        }
+    
     </style>
 </head>
 <body>
@@ -152,53 +136,57 @@ isLogIn();
         <a href="../views/home.php"> <img src =../asset/home.png> Home</a>
         <a href="../views/chore.html"> <img src =../asset/manage.png>Manage Chores</a>
         <a href="chore_control_view.php"> <img src =../asset/create.png>Create Chore</a>
-        <a href ="assignment_chore_view.php"><img src= ../asset/addAssignment.png>Create Assignment</a>
+        <a href ="assignment_control_view.php"><img src= ../asset/addAssignment.png>Create Assignment</a>
         <a href ="assign_chore_view.php"><img src= ../asset/update.png>Assign Chore</a>
         <a href="../login/logout.php"> <img src =../asset/logout.png>Logout</a>
     </div>
 
-    <div class="chore-container">
-        <h2>Assign New Chore</h2>
+    <div class="assignment-container">
+        <h2>Create a New Assignment</h2>
         <form id="assignChoreForm" action="#" method="post" name="assignChoreForm">
-            <label for="assignPerson">Assign Person:</label>
-            <select id="assignPerson" name="sid" required>
+            <label for="assignPerson">Select Chore:</label>
+            <select id="choreId" name="cid" required>
 
                <option value="0">Select</option>
 
-                <?php
-                selectPeople($conn);
-                ?>
-             
+               <?php
+               selectChore($conn);
+               ?>
+
             </select>
 
-            <label for="assignChore">Assign Chore:</label>
+            <label for="status">Chore Status:</label>
             <select id="assignChore" name="" required>
                
             <option value="0">Select</option>
 
             <?php
-               selectChore($conn);
+               selectChoreStatus($conn);
             ?>
  
             </select>
 
+            <label for="dueDate">Date assigned:</label>
+            <input type="date" id="dueDate" name="assignedDate" required>
+
+
             <label for="dueDate">Due Date:</label>
             <input type="date" id="dueDate" name="dueDate" required>
 
-            <button type="submit" id="assignChoreBtn" name="assignChoreBtn">Assign Chore</button>
+            <button type="submit">Create</button>
         </form>
 
-        <div class="chore-assigned">
-        <h2>Manage Assigned Chores</h2>
+        <div class="chore-assignment">
+        <h2>Manage Assignments</h2>
         <table>
             <thead>
                 <tr>
-                    <th>Chore Name</th>
-                    <th>Person Assigned</th>
-                    <th>Date Assigned</th>
+                    <th>Assignment Name</th>
+                    <th>Status</th>
+                    <th>Date assigned</th>
                     <th>Due Date</th>
-                    <th>Chore Status</th>
-                    <th>Actions</th>
+                    <th>Date updated</th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -209,23 +197,14 @@ isLogIn();
                     <td>2024-02-01</td>
                     <td>2024-02-15</td>
                     <td>Pending</td>
-                    <td class="action-buttons">
-                        <button class="edit-button" onclick="editAssignedChore(1)"><img src ="../asset/edit.png"></button>
-                        <button class="complete-button" onclick="markChoreComplete(1)"><img src ="../asset/completed.png"></button>
-                        <button class="incomplete-button" onclick="markChoreIncomplete(1)"><img src ="../asset/incomplete.png"></button>
-                    </td>
+                    
                 </tr>
                 <tr>
                     <td>Mowing</td>
                     <td>Person 2</td>
                     <td>2024-02-03</td>
                     <td>2024-02-10</td>
-                    <td>In Progress</td>
-                    <td class="action-buttons">
-                        <button class="edit-button" onclick="editAssignedChore(1)">Edit</button>
-                        <button class="complete-button" onclick="markChoreComplete(1)">Complete</button>
-                        <button class="incomplete-button" onclick="markChoreIncomplete(1)">Incomplete</button>
-                    </td>
+                    <td>In Progress</td>      
 
             </tbody>
 
