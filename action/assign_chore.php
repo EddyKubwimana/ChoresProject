@@ -2,7 +2,8 @@
 session_start();
 include("../setting/connection.php");
 
-$cid = mysqli_escape_stringc($conn, $_POST["cid"]);
+$pid = mysqli_escape_string($conn, $_POST["pid"]);
+$aid = mysqli_escape_string($conn, $_POST["aid"]);
 
 
 

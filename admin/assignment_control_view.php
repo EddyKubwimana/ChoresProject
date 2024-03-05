@@ -7,7 +7,9 @@ include("../setting/connection.php");
 require_once "../function/select_people.php";
 require_once "../function/select_chore.php";
 require_once "../function/select_chore_status.php";
+require_once "../function/display_assignment.php";
 isLogIn();
+onlyAdmin();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -134,16 +136,16 @@ isLogIn();
 <div class="navbar">
         <a href="#">Chore MS</a>
         <a href="../views/home.php"> <img src =../asset/home.png> Home</a>
-        <a href="../views/chore.html"> <img src =../asset/manage.png>Manage Chores</a>
-        <a href="chore_control_view.php"> <img src =../asset/create.png>Create Chore</a>
-        <a href ="assignment_control_view.php"><img src= ../asset/addAssignment.png>Create Assignment</a>
-        <a href ="assign_chore_view.php"><img src= ../asset/update.png>Assign Chore</a>
+        <a href="../views/chore.php"> <img src =../asset/manage.png>Manage Chores</a>
+        <?php
+        isSuperAdmin();
+        ?>
         <a href="../login/logout.php"> <img src =../asset/logout.png>Logout</a>
     </div>
 
     <div class="assignment-container">
         <h2>Create a New Assignment</h2>
-        <form id="assignChoreForm" action="#" method="post" name="assignChoreForm">
+        <form id="assignChoreForm" action="../action/create_assignment.php" method="post" name="assignChoreForm">
             <label for="assignPerson">Select Chore:</label>
             <select id="choreId" name="cid" required>
 
@@ -156,7 +158,7 @@ isLogIn();
             </select>
 
             <label for="status">Chore Status:</label>
-            <select id="assignChore" name="" required>
+            <select id="assignChore" name="sid" required>
                
             <option value="0">Select</option>
 
@@ -177,34 +179,26 @@ isLogIn();
         </form>
 
         <div class="chore-assignment">
-        <h2>Manage Assignments</h2>
+        <h2>History of  Assignments</h2>
         <table>
             <thead>
                 <tr>
-                    <th>Assignment Name</th>
+                    <th>Assignment Id</th>
                     <th>Status</th>
-                    <th>Date assigned</th>
-                    <th>Due Date</th>
-                    <th>Date updated</th>
+                    <th>Chore Id</th>
+                    <th>Date Assigned</th>
+                    <th>Date Due</th>
                     
                 </tr>
+
+                <?php
+
+                 displayAssignment($conn);
+                ?>
             </thead>
             <tbody>
-               
-                <tr>
-                    <td>cleaning</td>
-                    <td>Person 1</td>
-                    <td>2024-02-01</td>
-                    <td>2024-02-15</td>
-                    <td>Pending</td>
-                    
-                </tr>
-                <tr>
-                    <td>Mowing</td>
-                    <td>Person 2</td>
-                    <td>2024-02-03</td>
-                    <td>2024-02-10</td>
-                    <td>In Progress</td>      
+                
+            
 
             </tbody>
 

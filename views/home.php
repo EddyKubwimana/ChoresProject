@@ -1,4 +1,5 @@
 <?php
+include("../setting/core.php");
 
 session_start();
 if (isset($_SESSION["userId"]) && $_SESSION["userId"]) {
@@ -149,10 +150,10 @@ else{
     <div class="navbar">
         <a href="#">Chore MS</a>
         <a href="home.php"> <img src =../asset/home.png> Home</a>
-        <a href="chore.html"> <img src =../asset/manage.png>Manage Chores</a>
-        <a href="../admin/chore_control_view.php"> <img src =../asset/create.png>Create Chore</a>
-        <a href ="../admin/assignment_control_view.php"><img src= ../asset/addAssignment.png>Create Assignment</a>
-        <a href = "../admin/assign_chore_view.php"><img src= ../asset/update.png>Assign Chore</a>
+        <a href="chore.php"> <img src =../asset/manage.png>Manage Chores</a>
+        <?php
+        isSuperAdmin();
+        ?>
         <a href="../login/logout.php"> <img src =../asset/logout.png>Logout</a>
     </div>
 

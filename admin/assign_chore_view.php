@@ -7,6 +7,8 @@ include("../setting/connection.php");
 require_once "../function/select_people.php";
 require_once "../function/select_chore.php";
 isLogIn();
+
+onlyAdmin();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -150,18 +152,18 @@ isLogIn();
 <div class="navbar">
         <a href="#">Chore MS</a>
         <a href="../views/home.php"> <img src =../asset/home.png> Home</a>
-        <a href="../views/chore.html"> <img src =../asset/manage.png>Manage Chores</a>
-        <a href="chore_control_view.php"> <img src =../asset/create.png>Create Chore</a>
-        <a href ="assignment_control_view.php"><img src= ../asset/addAssignment.png>Create Assignment</a>
-        <a href ="assign_chore_view.php"><img src= ../asset/update.png>Assign Chore</a>
+        <a href="../views/chore.php"> <img src =../asset/manage.png>Manage Chores</a>
+        <?php
+        isSuperAdmin();
+        ?>
         <a href="../login/logout.php"> <img src =../asset/logout.png>Logout</a>
     </div>
 
     <div class="chore-container">
         <h2>Assign New Chore</h2>
         <form id="assignChoreForm" action="#" method="post" name="assignChoreForm">
-            <label for="assignPerson">Assign Person:</label>
-            <select id="assignPerson" name="sid" required>
+            <label for="assignPerson">Select A  Person:</label>
+            <select id="assignPerson" name="pid" required>
 
                <option value="0">Select</option>
 
@@ -171,8 +173,8 @@ isLogIn();
              
             </select>
 
-            <label for="assignChore">Assign Chore:</label>
-            <select id="assignChore" name="" required>
+            <label for="assignChore">Select The Assignment:</label>
+            <select id="assignChore" name="aid" required>
                
             <option value="0">Select</option>
 
@@ -182,10 +184,7 @@ isLogIn();
  
             </select>
 
-            <label for="dueDate">Due Date:</label>
-            <input type="date" id="dueDate" name="dueDate" required>
-
-            <button type="submit" id="assignChoreBtn" name="assignChoreBtn">Assign Chore</button>
+            <button type="submit">Assign Chore</button>
         </form>
 
         <div class="chore-assigned">
