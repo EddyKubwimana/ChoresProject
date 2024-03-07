@@ -1,7 +1,8 @@
 
 <?php
-
+include("../setting/connection.php");
 include("../setting/core.php");
+require_once "../function/personal_dashboard.php";
 
 ?>
 <!DOCTYPE html>
@@ -122,22 +123,9 @@ include("../setting/core.php");
             </thead>
             <tbody>
               
-                <tr>
-                    <td>Mow </td>
-                    <td>Claire NAHIMANA</td>
-                    <td>2024-02-01</td>
-                    <td>2024-02-15</td>
-                    <td>Pending</td>
-                    <td><button class="action-button" onclick="markAsCompleted()">Mark as Completed</button></td>
-                </tr>
-                <tr>
-                    <td>Wash Dishes</td>
-                    <td>Jane KAburayo</td>
-                    <td>2024-02-03</td>
-                    <td>2024-02-10</td>
-                    <td>In Progress</td>
-                    <td><button class="action-button" onclick="markAsCompleted()">Mark as Completed</button></td>
-                </tr>
+               <?php
+               managePersonalChores($_SESSION['userId'],$conn);
+               ?>
             </tbody>
         </table>
 
@@ -153,21 +141,11 @@ include("../setting/core.php");
                 </tr>
             </thead>
             <tbody>
-               
-                <tr>
-                    <td>Washing clothes</td>
-                    <td>Steve Nsabimana</td>
-                    <td>2024-01-25</td>
-                    <td>2024-02-05</td>
-                    <td>Completed</td>
-                </tr>
-                <tr>
-                    <td>Clean Windows</td>
-                    <td> Williams Hatungima</td>
-                    <td>2024-01-30</td>
-                    <td>2024-02-10</td>
-                    <td>Complseted</td>
-                </tr>
+               <?php
+
+               allCompletedChores($_SESSION['userId'],$conn);
+
+               ?>
             </tbody>
         </table>
     </div>

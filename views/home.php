@@ -173,7 +173,7 @@ else{
                 <?php
                 
                 $inprogresschores = inprogressChore($_SESSION["userId"],$conn);
-                echo"<p>$inprogresschores choress</p>";
+                echo"<p>$inprogresschores chores</p>";
 
                 ?>
             </div>
@@ -214,23 +214,11 @@ else{
                 </tr>
             </thead>
             <tbody>
-              
-                <tr>
-                    <td>Cleaning</td>
-                    <td>Eddy Kubwimana</td>
-                    <td>2024-02-01</td>
-                    <td>2024-02-15</td>
-                    <td>Pending</td>
-                    <td><button class="action-button" onclick="markAsCompleted()"><img src =../asset/completed.png></button></td>
-                </tr>
-                <tr>
-                    <td>Wash Dishes</td>
-                    <td>Jane Smith</td>
-                    <td>2024-02-03</td>
-                    <td>2024-02-10</td>
-                    <td>In Progress</td>
-                    <td><button class="action-button" onclick="markAsCompleted()"><img src =../asset/completed.png></button></td>
-                </tr>
+
+            <?php
+            personalChores($_SESSION["userId"],$conn)
+            ?>
+
             </tbody>
         </table>
     </div>
