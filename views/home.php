@@ -1,7 +1,7 @@
 <?php
-include("../setting/core.php");
-
 session_start();
+include("../setting/core.php");
+require_once "../function/personal_dashboard.php";
 if (isset($_SESSION["userId"]) && $_SESSION["userId"]) {
 
 include("../setting/connection.php");
@@ -170,17 +170,32 @@ else{
             <div class="box" onclick="redirectToChoreManagement('in-progress')">
                 <img class = "statusImage" src =../asset/pending.png>
                 <h2>In Progress</h2>
-                <p>12 chores</p>
+                <?php
+                
+                $inprogresschores = inprogressChore($_SESSION["userId"],$conn);
+                echo"<p>$inprogresschores choress</p>";
+
+                ?>
             </div>
             <div class="box" onclick="redirectToChoreManagement('incomplete')">
                 <img  class = "statusImage" src =../asset/incomplete.png>
                 <h2>Incomplete</h2>
-                <p>5 chores</p>
+                <?php
+                
+                $incompletedchores = incompleteChore($_SESSION["userId"],$conn);
+                echo"<p>$incompletedchores chores</p>";
+
+                ?>
             </div>
             <div class="box" onclick="redirectToChoreManagement('completed')">
                 <img class = "statusImage" src =../asset/completed.png>
                 <h2>Completed</h2>
-                <p>20 chores</p>
+                <?php
+                
+                $completedchores = completeChore($_SESSION["userId"],$conn);
+                echo"<p>$completedchores chores</p>";
+
+                ?>
             </div>
         </div>
 

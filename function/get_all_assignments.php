@@ -10,6 +10,8 @@ function selectAssignment($conn){
                 echo "<option value='$aid'>$cname</option>";
     };
 
+    mysqli_free_result($secondResult);
+
 }
 
 ?>
