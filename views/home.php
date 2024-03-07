@@ -223,11 +223,11 @@ else{
     <script>
         function redirectToChoreManagement(status) {
         
-            window.location.href = 'chore.html?status=' + status;
+            window.location.href = 'chore.php?status=' + status;
         }
 
         function markAsCompleted() {
-            // Add your logic to update the chore status (e.g., mark as completed)
+            
             alert(' marked as completed!');
         }
     </script>

@@ -6,6 +6,10 @@ include("../setting/core.php");
 include("../setting/connection.php");
 require_once "../function/select_people.php";
 require_once "../function/select_chore.php";
+require_once "../function/get_all_assignments.php";
+require_once "../function/assignment_report.php";
+
+
 isLogIn();
 
 onlyAdmin();
@@ -161,7 +165,7 @@ onlyAdmin();
 
     <div class="chore-container">
         <h2>Assign New Chore</h2>
-        <form id="assignChoreForm" action="#" method="post" name="assignChoreForm">
+        <form id="assignChoreForm" action="../action/assign_chore.php" method="post" name="assignChoreForm">
             <label for="assignPerson">Select A  Person:</label>
             <select id="assignPerson" name="pid" required>
 
@@ -179,7 +183,7 @@ onlyAdmin();
             <option value="0">Select</option>
 
             <?php
-               selectChore($conn);
+               selectAssignment($conn);
             ?>
  
             </select>
@@ -202,29 +206,11 @@ onlyAdmin();
             </thead>
             <tbody>
                
-                <tr>
-                    <td>cleaning</td>
-                    <td>Person 1</td>
-                    <td>2024-02-01</td>
-                    <td>2024-02-15</td>
-                    <td>Pending</td>
-                    <td class="action-buttons">
-                        <button class="edit-button" onclick="editAssignedChore(1)"><img src ="../asset/edit.png"></button>
-                        <button class="complete-button" onclick="markChoreComplete(1)"><img src ="../asset/completed.png"></button>
-                        <button class="incomplete-button" onclick="markChoreIncomplete(1)"><img src ="../asset/incomplete.png"></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Mowing</td>
-                    <td>Person 2</td>
-                    <td>2024-02-03</td>
-                    <td>2024-02-10</td>
-                    <td>In Progress</td>
-                    <td class="action-buttons">
-                        <button class="edit-button" onclick="editAssignedChore(1)">Edit</button>
-                        <button class="complete-button" onclick="markChoreComplete(1)">Complete</button>
-                        <button class="incomplete-button" onclick="markChoreIncomplete(1)">Incomplete</button>
-                    </td>
+                <?php
+
+                selectAssignedAssignment($conn);
+
+                ?>
 
             </tbody>
 
