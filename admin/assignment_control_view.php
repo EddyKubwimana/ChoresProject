@@ -171,7 +171,9 @@ onlyAdmin();
         <a href="../login/logout.php"> <img src =../asset/logout.png>Logout</a>
     </div>
 
-    <div class="assignment-container">
+    <div class="assignment-container" id ="assignment-container">
+    
+
         <h2>Create a New Assignment</h2>
         <form id="assignChoreForm" action="../action/create_assignment.php" method="post" name="assignChoreForm">
             <label for="assignPerson">Select Chore:</label>
@@ -207,6 +209,7 @@ onlyAdmin();
         </form>
 
         <div class="chore-assignment">
+    
         <h2>History of  Assignments</h2>
         <table>
             <thead>
@@ -238,20 +241,6 @@ onlyAdmin();
 
 <script>
 
-function editChore(choreId) {
-        var chore = document.getElementById(choreId);
-        var cid = choreId; 
-
-        var container = document.getElementById("chore-container");
-
-        var overlay = document.createElement("div");
-        overlay.classList.add("overlay");
-        overlay.style.display = "flex";
-        overlay.setAttribute("myclass","overlay");
-        overlay.innerHTML= "<div class='popup'><form id='choreForm' action='../action/update_assignment.php' method ='get' name='cid'><label for='cid'>id:</label><input type='number' name='cid' value='" + cid + "' readonly><label for='choreName'>update the chore name:</label><input type='text' id='choreName' name='choreName' placeholder='Enter the updated name' required><button onclick='closePopupun()' type='submit' id='createChoreBtn' name='createChoreBtn'>update</button></form><button onclick='closePopupdeux()'>cancel</button></div>";
-        container.appendChild(overlay);
-    }
-
 function deleteAssignment(choreId){
 
 window.location.href = "../action/delete_assignement.php?id="+choreId+"";
@@ -259,7 +248,56 @@ window.location.href = "../action/delete_assignement.php?id="+choreId+"";
 }
 
 
+function editAssignment(choreId, chorename, status, date_assigned, date_due) {
+    var container = document.getElementById("assignment-container");
+
+    var overlay = document.createElement("div");
+    overlay.classList.add("overlay");
+    overlay.style.display = "flex";
+    overlay.setAttribute("myclass", "overlay");
+
+    overlay.innerHTML = "<div class='popup'> <h2>update Assignment</h2>\
+    <form id='assignChoreForm' action='../action/edit_assignment.php' method='post' name='assignChoreForm'>\
+        <label for='assignPerson'>Select Chore:</label>\
+        <select id='choreId' name='cid' required>\
+           <option value='0'>" + chorename + "</option>\
+        </select>\
+        <label for='status'>Chore Status:</label>\
+        <select id='assignChore' name='sid' required>\
+           <option value='0'>" + status + "</option>\
+        </select>\
+        <label for='dueDate'>Date assigned:</label>\
+        <input type='date' id='dueDate' name='assignedDate' value='" + date_assigned + "' required>\
+        <label for='dueDate'>Due Date:</label>\
+        <input type='date' id='dueDate' name='dueDate' value='" + date_due + "' required>\
+        <button type='submit'>update</button>\
+    </form>\
+    <button onclick='closePopupdeux()'>cancel</button>\
+</div>";
+
+    container.appendChild(overlay);
+}
+
+
+function closePopupun() {
+            var div = document.getElementById("overlay");
+            div.style.display = "none";
+            
+            }
+            
+            
+function closePopupdeux() {
+                window.location.href = "assignment_control_view.php";
+                $(".overlay").remove();
+                
+                
+
+            }
+
+
+
 </script>
+
 
 </body>
 
