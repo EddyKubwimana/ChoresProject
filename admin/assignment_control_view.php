@@ -129,6 +129,34 @@ onlyAdmin();
             color: #fff;
         }
 
+        .overlay {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+    }
+
+    .popup {
+    background: #fff;
+    padding: 100px;
+    border-radius: 10px;
+    text-align: center;
+    color :black;
+    background-color:white ;
+    }
+
+    .popup button {
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+       }
+
     
     </style>
 </head>
@@ -183,11 +211,12 @@ onlyAdmin();
         <table>
             <thead>
                 <tr>
-                    <th>Assignment Id</th>
+                    <th>Chore name</th>
                     <th>Status</th>
-                    <th>Chore Id</th>
                     <th>Date Assigned</th>
                     <th>Date Due</th>
+                    <th>Actions</th>
+
                     
                 </tr>
 
@@ -207,7 +236,30 @@ onlyAdmin();
     </div>
     </div>
 
-    
+<script>
+
+function editChore(choreId) {
+        var chore = document.getElementById(choreId);
+        var cid = choreId; 
+
+        var container = document.getElementById("chore-container");
+
+        var overlay = document.createElement("div");
+        overlay.classList.add("overlay");
+        overlay.style.display = "flex";
+        overlay.setAttribute("myclass","overlay");
+        overlay.innerHTML= "<div class='popup'><form id='choreForm' action='../action/update_assignment.php' method ='get' name='cid'><label for='cid'>id:</label><input type='number' name='cid' value='" + cid + "' readonly><label for='choreName'>update the chore name:</label><input type='text' id='choreName' name='choreName' placeholder='Enter the updated name' required><button onclick='closePopupun()' type='submit' id='createChoreBtn' name='createChoreBtn'>update</button></form><button onclick='closePopupdeux()'>cancel</button></div>";
+        container.appendChild(overlay);
+    }
+
+function deleteAssignment(choreId){
+
+window.location.href = "../action/delete_assignement.php?id="+choreId+"";
+
+}
+
+
+</script>
 
 </body>
 
@@ -216,3 +268,5 @@ onlyAdmin();
 $conn->close();
 
 ?>
+
+</html>

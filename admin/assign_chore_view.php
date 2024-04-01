@@ -166,16 +166,6 @@ onlyAdmin();
     <div class="chore-container">
         <h2>Assign New Chore</h2>
         <form id="assignChoreForm" action="../action/assign_chore.php" method="post" name="assignChoreForm">
-            <label for="assignPerson">Select A  Person:</label>
-            <select id="assignPerson" name="pid" required>
-
-               <option value="0">Select</option>
-
-                <?php
-                selectPeople($conn);
-                ?>
-             
-            </select>
 
             <label for="assignChore">Select The Assignment:</label>
             <select id="assignChore" name="aid" required>
@@ -187,6 +177,18 @@ onlyAdmin();
             ?>
  
             </select>
+
+            <label for="assignPerson">Select A  Person:</label>
+
+            <select id="assignPerson" name="pid" required>
+
+                    <option value="0">Select</option>
+
+                    <?php
+                    selectPeople($conn);
+                    ?>
+
+                    </select>
 
             <button type="submit">Assign Chore</button>
         </form>

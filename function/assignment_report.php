@@ -21,7 +21,7 @@ function selectAssignedAssignment($conn){
                 echo" <td>$datedue</td>";
                 echo"<td>$status</td>";
                 echo"<td class='action-buttons'>";
-                echo"<button class='edit-button' onclick='editAssignedChore(1)'><img src ='../asset/edit.png'></button>";
+                echo"<button id =class='edit-button' onclick='editAssignedChore(1)'><img src ='../asset/edit.png'></button>";
                 echo"<button class='complete-button' onclick='markChoreComplete(1)'><img src ='../asset/completed.png'></button>";
                 echo "<button class='incomplete-button' onclick='markChoreIncomplete(1)'><img src ='../asset/incomplete.png'></button>";
                 echo "</td>";
