@@ -259,8 +259,8 @@ function editAssignment(choreId, chorename, status, date_assigned, date_due) {
     overlay.innerHTML = "<div class='popup'> <h2>update Assignment</h2>\
     <form id='assignChoreForm' action='../action/edit_assignment.php' method='post' name='assignChoreForm'>\
         <label for='assignPerson'>Select Chore:</label>\
-        <select id='choreId' name='cid' required>\
-           <option value='0'>" + chorename + "</option>\
+        <select id='choreId' name='assignmentid' required>\
+           <option value="+choreId+">" + chorename + "</option>\
         </select>\
         <label for='status'>Chore Status:</label>\
         <select id='assignChore' name='sid' required>\

@@ -221,6 +221,23 @@ onlyAdmin();
     </div>
     </div>
 
+
+<script>
+
+function markChoreComplete(choreId){
+
+window.location.href = "../action/mark_complete.php?assignmentid="+choreId+"";
+
+}
+
+function markChoreIncomplete(choreId){
+
+window.location.href = "../action/mark_incomplete.php?assignmentid="+choreId+"";
+
+}
+
+</script>
+
     
 
 </body>

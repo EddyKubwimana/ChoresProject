@@ -1,12 +1,12 @@
 <?php
 session_start();
 include("../setting/connection.php");
+$cid = mysqli_real_escape_string($conn, $_POST['assignmentid']);
+$date_assign = mysqli_real_escape_string($conn, $_POST['assignedDate']);
+$date_due = mysqli_real_escape_string($conn, $_POST['dueDate']);
 
-$date_assign= mysqli_real_escape_string($conn,$_POST['assignedDate']);
-$date_due= mysqli_real_escape_string($conn,$_POST['dueDate']);
-$userId = $_SESSION["userId"];
- 
-$sql = " INSERT INTO Assignment(cid,sid,date_assign,date_due, who_assigned) values('$cid','$sid','$date_assign','$date_due','$userId')";
+$sql = "UPDATE Assignment SET date_assign = '$date_assign', date_due = '$date_due' WHERE assignmentid = $cid";
+
 $result = mysqli_query($conn, $sql);
   
 if ($result) {
