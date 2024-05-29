@@ -72,9 +72,28 @@ Here are some screenshots of the application:
 
 ### Add chore
 ![Add chore](image/chore_creattion.png)
+
+### update chore
+![update chore](image/update_chore.png)
+
+### Delete chore
+![Delete chore](image/delete_chore.png)
+
+###  chore Status
+![Chore status](image/choresStatus.png)
 ### Add Assignment
 
-![Add Assignment](image/assignemt_creattion.png)
+![Add Assignment](image/Assignment_creattion.png)
+
+### Assign an Assignment
+
+![Assign an  Assignment](image/chore_assignment.png)
+
+### Updating Assignment
+
+![updating Assignment](image/updating_assignment.png)
+
+
 
 
   
@@ -88,7 +107,6 @@ We welcome contributions from the community! If you'd like to contribute, please
 4. Push to the branch (`git push origin feature/YourFeature`).
 5. Open a pull request.
 
-Please ensure that your code adheres to our coding standards and includes appropriate tests.
 
 ## License
 
