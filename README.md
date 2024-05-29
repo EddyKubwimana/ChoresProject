@@ -19,10 +19,9 @@ ChoresProject is a comprehensive tool designed to help individuals and families 
 ## Features
 
 - **Task Management**: Create, edit, and delete tasks.
-- **Assignment**: Assign tasks to specific individuals.
-- **Notifications**: Receive reminders for upcoming and overdue tasks.
-- **Progress Tracking**: Monitor the completion status of chores.
-- **User Management**: Manage users and their roles within the household.
+- **Assignment**: create, edit, delete tasks Assignment.
+- **Assignement Treatement**: tick completed, uncompleted task
+- **User Management**: Manage users and their roles within the household for admin.
 
 ## Installation
 
@@ -38,10 +37,9 @@ To install and run ChoresProject locally, follow these steps:
     cd ChoresProject
     ```
 
-3. **Install the dependencies**:
-    ```bash
-    npm install
-    ```
+3. **Install the necessary software**:
+    - MAMP for MacOs, XAMP for Windows
+    - Download the Database and run into php Admin in your MAMP or XAMP
 
 4. **Start the application**:
     ```bash
@@ -50,14 +48,31 @@ To install and run ChoresProject locally, follow these steps:
 
 ## Usage
 
-Once the application is running, open your web browser and navigate to `http://localhost:3000` to access the ChoresProject interface. From there, you can:
-- **Create a account**: create an account 
--  **Login**: Click on the "Add Task" button and fill in the task details.
+Once the application is running, open your web browser and navigate to `http://localhost:8888` to access the ChoresProject interface. From there, you can:
+- **Create a account** 
+-  **Login**
 - **Create a new task**: Click on the "Add Task" button and fill in the task details.
+- **Update task**: Click on the update icon and change the task details
+- **Delete task** : click on Delete icon and confirm
 - **Assign a task**: Choose a user from the dropdown menu when creating or editing a task.
 - **Mark tasks as complete**: Click on the checkbox next to a task to mark it as complete.
 - **View task details**: Click on a task to see more details and options.
+-**etc**
 
+
+## Screenshots
+
+Here are some screenshots of the application:
+
+### Login Page
+![Home Page](image/login.png)
+
+### Dashboard
+![Task List](image/dashboard.png)
+
+### Add chore
+![Add Task](images/chore_creattion.png)
+  
 ## Contributing
 
 We welcome contributions from the community! If you'd like to contribute, please follow these steps:
