@@ -51,7 +51,8 @@ To install and run ChoresProject locally, follow these steps:
 ## Usage
 
 Once the application is running, open your web browser and navigate to `http://localhost:3000` to access the ChoresProject interface. From there, you can:
-
+- **Create a account**: create an account 
+-  **Login**: Click on the "Add Task" button and fill in the task details.
 - **Create a new task**: Click on the "Add Task" button and fill in the task details.
 - **Assign a task**: Choose a user from the dropdown menu when creating or editing a task.
 - **Mark tasks as complete**: Click on the checkbox next to a task to mark it as complete.
@@ -78,7 +79,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 For any questions or feedback, feel free to reach out:
 
 - **Name**: Eddy Kubwimana
-- **Email**: [your-email@example.com](mailto:your-email@example.com)
+- **Email**: [eddy.kubwimana@ashesi.edu.gh](mailto:eddy.kubwimana@ashesi.edu.gh)
 - **GitHub**: [EddyKubwimana](https://github.com/EddyKubwimana)
 
 ---
