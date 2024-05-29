@@ -142,9 +142,7 @@ require_once "../function/personal_dashboard.php";
             </thead>
             <tbody>
                <?php
-
                allCompletedChores($_SESSION['userId'],$conn);
-
                ?>
             </tbody>
         </table>
@@ -153,7 +151,6 @@ require_once "../function/personal_dashboard.php";
     <script>
         function markAsCompleted() {
 
-            alert(' marked as completed!');
         }
     </script>
 </body>

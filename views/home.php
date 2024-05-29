@@ -231,7 +231,6 @@ else{
 
         function markAsCompleted() {
             
-            alert(' marked as completed!');
         }
     </script>
 </body>
