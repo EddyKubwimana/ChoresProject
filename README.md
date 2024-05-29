@@ -68,10 +68,15 @@ Here are some screenshots of the application:
 ![Home Page](image/login.png)
 
 ### Dashboard
-![Task List](image/dashboard.png)
+![Dashboard](image/dashboard.png)
 
 ### Add chore
-![Add Task](images/chore_creattion.png)
+![Add chore](image/chore_creattion.png)
+### Add Assignment
+
+![Add Assignment](image/assignemt_creattion.png)
+
+
   
 ## Contributing
 
