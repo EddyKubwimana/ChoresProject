@@ -14,7 +14,7 @@ $username = $row["fname"].' '.$row["lname"];
 
 else{
 
-    header("Location:/choreProject/login/login.php");
+    header("Location:/ChoresProject/login/login.php");
     exit();
 }
 
