@@ -1,9 +1,9 @@
 <?php
-  $db_host = '127.0.0.1';
+  $db_host = '34.35.54.200';
   $db_user = 'root';
   $db_password = 'root';
   $db_db = 'chores_mgt';
-  $db_port = 8889;
+  $db_port = 3306;
 
   $conn = new mysqli(
     $db_host,
