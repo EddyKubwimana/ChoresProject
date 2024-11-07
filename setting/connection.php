@@ -1,7 +1,7 @@
 <?php
   $db_host = '34.35.54.200';
   $db_user = 'root';
-  $db_password = 'root';
+  $db_password = 'Ilove@Coding1';
   $db_db = 'chores_mgt';
   $db_port = 3306;
 
